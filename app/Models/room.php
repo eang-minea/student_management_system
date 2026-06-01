@@ -4,7 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class room extends Model
+class Room extends Model
 {
-    //
+    protected $fillable = [
+        'name',
+        'description',
+        'floor',
+        'capacity',
+    ];
 }
