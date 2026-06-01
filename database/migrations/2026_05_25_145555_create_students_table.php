@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('students', function (Blueprint $table) {
+           Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->foreign('room_id')
+            $table->foreignId('room_id')
                 ->nullable()
                 ->constrained('rooms')
-                ->nullable();
+                ->nullOnDelete();
             $table->string('student_name');
             $table->string('gender')->nullable();
             $table->string('phone_number')->nullable();
@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->timestamps();
         });
+
     }
 
     /**
