@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Model\Room;  // use room 
+use App\Models\Room;  // use room 
 use Illuminate\Http\Request;  
 
 class RoomController extends Controller
@@ -48,5 +48,30 @@ class RoomController extends Controller
     public function edit(Room $room)
     {
         return view('rooms.edit', compact('room'));
+    }
+
+    // update an existing room in the database
+    public function update(Request $request, $id) {
+        $room = Room::findOrFail($id);
+
+        $request->vailidate([
+            'name' => 'required',
+            'description' => 'required',
+            'floor' => 'required|integer',
+            'capacity' => 'required|integer',
+        ]);
+
+        $room->update($request->all());
+
+        return redirect('room')->with('success', 'Room updated successfully.');
+    }
+
+    // delete a room from the database 
+    public function deleteRoom($id){
+
+        $room = Room::findOrFail($id);
+        $room->delete();
+        return redirect('room')->with('success', 'Room Deleted successfully.');
+
     }
 }
