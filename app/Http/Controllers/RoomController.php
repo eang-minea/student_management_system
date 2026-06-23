@@ -30,7 +30,7 @@ class RoomController extends Controller
     public function store(Request $request) // vailidate
     {
         // User must fill in all tha date
-        $request->vailidate([
+        $request->validate([
             'name' => 'required',
             'description' => 'required',
             'floor' => 'required|integer',
@@ -40,7 +40,7 @@ class RoomController extends Controller
         // save the new room to the database
         Room::create($request->all());
 
-        return redirect('room')->with('success','Room create successfully.');
+        return redirect('rooms')->with('success','Room create successfully.');
     }
 
 
