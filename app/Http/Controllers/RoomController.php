@@ -22,7 +22,7 @@ class RoomController extends Controller
     //show form to create a new room
     public function create()
     {
-        return view('rooms.creat');
+        return view('rooms.create');
     }
     
 
@@ -54,7 +54,7 @@ class RoomController extends Controller
     public function update(Request $request, $id) {
         $room = Room::findOrFail($id);
 
-        $request->vailidate([
+        $request->validate([
             'name' => 'required',
             'description' => 'required',
             'floor' => 'required|integer',
@@ -63,7 +63,7 @@ class RoomController extends Controller
 
         $room->update($request->all());
 
-        return redirect('room')->with('success', 'Room updated successfully.');
+        return redirect('rooms')->with('success', 'Room updated successfully.');
     }
 
     // delete a room from the database 
