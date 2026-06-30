@@ -19,11 +19,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // student routes
-    Route::get('/students', [StudentController::class, 'index']);
+    Route::get('/students', [StudentController::class, 'index'])->name('students');
 
 
     // room routes
-    Route::get('/rooms', [RoomController::class, 'index']);
+    Route::get('/rooms', [RoomController::class, 'index'])->name('rooms');
     Route::get('/rooms/create',[RoomController::class, 'create']);
     Route::post('/rooms', [RoomController::class, 'store']);
     Route::get('/rooms/{room}/edit', [RoomController::class, 'edit']);
