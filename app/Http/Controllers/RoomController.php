@@ -71,7 +71,7 @@ class RoomController extends Controller
 
         $room = Room::findOrFail($id);
         $room->delete();
-        return redirect('room')->with('success', 'Room Deleted successfully.');
+        return redirect('rooms')->with('success', 'Room Deleted successfully.');
 
     }
 }

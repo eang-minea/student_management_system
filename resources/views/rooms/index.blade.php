@@ -39,9 +39,14 @@
                 </td>
                 <td class="py-4 px-6 border-b border-gray-200">
                     <a href="/rooms/{{ $room->id }}/edit">Edit</a>
+
+                    <form action="/rooms/{{$room->id}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button tpye="submit">Delete</button>
+                    </form>
                 </td>
             </tr>
-
             @endforeach
 
         </tbody>

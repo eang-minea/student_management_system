@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/rooms', [RoomController::class, 'store']);
     Route::get('/rooms/{room}/edit', [RoomController::class, 'edit']);
     Route::put('/rooms/{id}', [RoomController::class,'update']);
+    Route::delete('/rooms/{id}', [RoomController::class,'deleteRoom']);
 
 });
 
