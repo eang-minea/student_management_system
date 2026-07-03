@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\RoomController;
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -20,6 +21,8 @@ Route::middleware('auth')->group(function () {
 
     // student routes
     Route::get('/students', [StudentController::class, 'index'])->name('students');
+    Route::get('/students/create',[StudentController::class, 'create']);
+    Route::post('/students', [StudentController::class, 'store']);
 
 
     // room routes
