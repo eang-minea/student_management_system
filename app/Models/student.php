@@ -14,4 +14,9 @@ class Student extends Model
         'email',
         'address',
     ];
+       public function room()
+    {
+        return $this->belongsTo(Room::class);
+    }
+
 }

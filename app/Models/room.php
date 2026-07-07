@@ -12,4 +12,8 @@ class Room extends Model
         'floor',
         'capacity',
     ];
+    public function students()
+    {
+        return $this->hasMany(Student::class);
+    }
 }

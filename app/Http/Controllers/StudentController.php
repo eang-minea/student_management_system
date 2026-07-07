@@ -3,20 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Student;  // use Student 
+use App\Models\Student;  // use Student
+use App\Models\Room;  // use Room 
 
 
 class StudentController extends Controller
 {
     public function index ()
     {
-        $students = Student::latest()->get();
+        $students = Student::with('room')->latest()->get();
         return view('students.index', compact('students'));
     }
 
+
     public function create()
     {
-        return view('students.create');
+        $rooms = Room::all(); // Fetch all rooms from the database
+        return view('students.create', compact('rooms'));
     }
 
     public function store(Request $request)
@@ -37,7 +40,8 @@ class StudentController extends Controller
 
     public function edit(Student $student)
     {
-        return view('students.edit', compact('student'));
+        $rooms = Room::all(); // Fetch all rooms from the database
+        return view('students.edit', compact('student', 'rooms'));
     }
 
     public function update(Reuest $request, $id) {

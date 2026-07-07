@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/students', [StudentController::class, 'index'])->name('students');
     Route::get('/students/create',[StudentController::class, 'create']);
     Route::post('/students', [StudentController::class, 'store']);
+    Route::get('/students/{student}/edit', [StudentController::class, 'edit']);
 
 
     // room routes
