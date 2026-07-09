@@ -44,7 +44,7 @@ class StudentController extends Controller
         return view('students.edit', compact('student', 'rooms'));
     }
 
-    public function update(Request $request, $id) {
+    public function updateStudents(Request $request, $id) {
         $student = Student::findOrFail($id);
 
         $request->validate([

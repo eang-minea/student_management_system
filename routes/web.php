@@ -24,7 +24,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/students/create',[StudentController::class, 'create']);
     Route::post('/students', [StudentController::class, 'store']);
     Route::get('/students/{student}/edit', [StudentController::class, 'edit']);
-    Route::put('/students/{id}', [StudentController::class,'update']);
+    Route::put('/students/{id}', [StudentController::class,'updateStudents']);
+    Route::delete('/students/{id}', [StudentController::class,'deleteStudent']);
 
 
     

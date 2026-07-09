@@ -29,10 +29,10 @@
         <tbody class="bg-white">
 
         <!-- loop through students and display them in the table -->
-            @foreach ($students as $student) 
+            @foreach ($students as $student ) 
 
             <tr>
-                <td class="py-4 px-6 border-b border-gray-200">{{$student->id}}</td>
+                <td class="py-4 px-6 border-b border-gray-200">{{$loop->iteration}}</td>
                 <td class="py-4 px-6 border-b border-gray-200">{{$student->room->name}}</td>
                 <td class="py-4 px-6 border-b border-gray-200 truncate">{{ $student->student_name}}</td>
                 <td class="py-4 px-6 border-b border-gray-200">{{ $student->gender}}</td>
