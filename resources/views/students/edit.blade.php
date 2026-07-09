@@ -9,8 +9,10 @@
             <div class="w-full px-6 py-8 md:p-8">
                 <h2 class="text-2xl font-bold text-gray-800">Update Student</h2>
                 <p class="mt-4 text-gray-600">Please fill out the form below to Update a Student.</p>
-                <form class="mt-6" method="POST" action="/students">
+                <form class="mt-6" method="POST" action="/students/{{ $student->id }}">
+
                     @csrf
+                    @method('PUT')
 
                     <div class="mb-6">
                         <label class="block text-gray-800 font-bold mb-2" for="name">
@@ -18,18 +20,17 @@
                         </label>
                         <select name="room_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="room_id">
                             @foreach ($rooms as $room)
-                                <option value="{{ $room->id }}">{{ $room->name }}</option>
+                                <option {{ $student->room_id == $room->id ? 'selected' : '' }} value="{{ $room->id }}">{{ $room->name }}</option>
                             @endforeach
                         </select>
-                        <!-- <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                        name="room_id" type="text" placeholder="Enter room id"> -->
                     </div>
+
 
                     <div class="mb-6">
                         <label class="block text-gray-800 font-bold mb-2" for="description">
                             Student Name
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        <input value="{{ $student->student_name }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                          name="student_name" type="text" placeholder="Enter student name">
                     </div>
 
@@ -37,7 +38,7 @@
                         <label class="block text-gray-800 font-bold mb-2" for="Floor">
                             Gender
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                        <input value="{{ $student->gender }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
                         name="gender" type="text" placeholder="Enter Gender">
                     </div>
 
@@ -45,7 +46,7 @@
                         <label class="block text-gray-800 font-bold mb-2" for="Capacity">
                             Phone Number
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                        <input value="{{ $student->phone_number }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
                         name="phone_number" type="text" placeholder="Enter Phone Number">
                     </div>
 
@@ -53,7 +54,7 @@
                         <label class="block text-gray-800 font-bold mb-2" for="Capacity">
                             Email
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                        <input value="{{ $student->email }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
                         name="email" type="text" placeholder="Enter Email">
                     </div>
                     
@@ -61,7 +62,7 @@
                         <label class="block text-gray-800 font-bold mb-2" for="Capacity">
                             Address
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                        <input value="{{ $student->address }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
                         name="address" type="text" placeholder="Enter Address">
                     </div>
                     
